@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>Hello Cat World</title>	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+</head>
+	<body>
+	<h2>Cat World Login</h2>
+	
+		<form id="loginForm" action="/cat/loginProc" method="post">
+			<fieldset>
+				ID : <input type="text" name="id" placeholder="아이디"><br/>
+				PW : <input type="password" name="password" placeholder="비밀번호"><br/>
+			<input type="submit" value="로그인"><br/>
+			</fieldset>
+		</form>
+		
+		<input type="button" id="joinBtn" value="회원가입" />
+		<input type="button" id="listBtn" value="고양이분양리스트" />
+		<input type="button" id="mainBtn" value="메인" />
+	
+	<script>
+		$('#joinBtn').on('click', function() {
+			location.href = "/cat/join";
+		});
+		
+		$('#listBtn').on('click', function() {
+			location.href = "/cat/list";
+		});
+		$('#mainBtn').on('click', function() {
+			location.href = "/";
+		});
+	
+	</script>
+	
+	</body>
+</html>
