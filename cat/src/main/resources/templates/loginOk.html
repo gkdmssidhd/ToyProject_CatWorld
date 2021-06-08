@@ -12,15 +12,19 @@
 	
 		<input type="button" id="listBtn" value="고양이분양리스트" />
 		<input type="button" id="mainBtn" value="메인" />
+		<input type="button" id="logoutBtn" value="로그아웃" th:if="${session.id != null}"/>
 	
 	<script>
 		$('#listBtn').on('click', function() {
-			location.href = "/cat/list";
+			location.href = "/cat/catListPage";
 		});
 		$('#mainBtn').on('click', function() {
 			location.href = "/";
 		});
-	
+		
+		$('#logoutBtn').on('click', function() {
+			location.href = "/cat/logout";
+		});
 	</script>
 	
 	</body>

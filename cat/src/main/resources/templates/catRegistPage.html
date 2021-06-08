@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<title>Hello Cat World</title>	
+	<title>CatRegistPage</title>	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 	<body>
-	<h2>Cat World List</h2>
+	<h2>CatRegistPage</h2>
+	<form id="catRegistForm" th:action="@{/cat/catSave}" th:method="POST">
 	
+	</form>
 		<input type="button" id="mainBtn" value="메인" />
 	
 	<script>
