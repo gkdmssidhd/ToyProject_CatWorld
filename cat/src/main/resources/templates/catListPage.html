@@ -11,10 +11,15 @@
 	<h2>Cat List</h2>
 	
 		<input type="button" id="mainBtn" value="메인" />
+		<input type="button" id="RegistBtn" value="고양이 등록" />
 	
 	<script>
 		$('#mainBtn').on('click', function() {
 			location.href = "/";
+		});
+		
+		$('#RegistBtn').on('click', function() {
+			location.href = "/cat/catRegistPage";
 		});
 		
 	

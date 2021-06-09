@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cat.cat.service.CatWorldService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cat.cat.service.CatWorldService;
 import com.cat.cat.vo.CatVO;
@@ -117,10 +119,19 @@ public class CatWorldController {
 	
 	// 고양이 분양글을 실제로 올리는 페이지만 리턴하는 곳!
 	@RequestMapping("catRegistPage")
-	public String catRegistPage(CatVO catVO)  {
+	public String catRegistPage(HttpServletResponse response, CatVO catVO, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes)  {
 		
+		HttpSession session = request.getSession();
 		
-		return "catRegistPage";
+		Object member = session.getAttribute("id");
+		
+		if(member == null) {
+			return "redirect:/cat/login";
+		} else {
+			return "catRegistPage";
+			
+		}
+		
 	}
 	
 	// 실제로 고양이 분양글을 저장하는 곳
@@ -128,7 +139,7 @@ public class CatWorldController {
 	public String catSave(CatVO catVO)  {
 		
 		
-		return "catSave";
+		return "";
 	}
 	
 	@RequestMapping("catDetail")

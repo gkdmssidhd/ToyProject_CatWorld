@@ -19,7 +19,7 @@ public class CatVO {
 	private String model;			// 종
 	private int age;				// 나이
 	private int gender;				// 성별
-	private String content;			// 내용
+	private String content;			// 소개
 	private int price;				// 가격
 	private Timestamp regDate;		// 등록일시
 	private Timestamp updateDate;	// 수정일시
