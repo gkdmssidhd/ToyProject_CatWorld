@@ -6,10 +6,10 @@ import com.cat.cat.vo.CatVO;
 public interface CatWorldService {
 
 	// 회원가입
-	public void joinProc(CatVO catVO);
+	public void joinProc(CatVO catVO) throws Exception;
 
 	// 로그인
-	public CatVO loginProc(CatVO catVO);
+	public CatVO loginProc(CatVO catVO) throws Exception;
 
 
 

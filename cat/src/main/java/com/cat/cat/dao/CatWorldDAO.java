@@ -12,7 +12,7 @@ import com.cat.cat.vo.CatVO;
 public class CatWorldDAO extends AbstractDAO {
 	private static final Logger logger = LoggerFactory.getLogger(CatWorldDAO.class);
 
-	public void joinProc(CatVO catVO) {
+	public void joinProc(CatVO catVO) throws Exception {
 	
 		  try { 
 			  insert("cat.insertMember", catVO); 
@@ -22,7 +22,7 @@ public class CatWorldDAO extends AbstractDAO {
 		  }
 	}
 
-	public CatVO loginProc(CatVO catVO) {
+	public CatVO loginProc(CatVO catVO) throws Exception{
 		
 		return (CatVO) select("cat.selectMember", catVO); 
 	}

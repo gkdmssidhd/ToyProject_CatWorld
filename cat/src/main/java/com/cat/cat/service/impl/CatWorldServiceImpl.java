@@ -21,13 +21,13 @@ public class CatWorldServiceImpl implements CatWorldService {
 	private CatWorldDAO CatWorldDAO;
 
 	@Override
-	public void joinProc(CatVO catVO) {
+	public void joinProc(CatVO catVO) throws Exception {
 		
 		CatWorldDAO.joinProc(catVO);
 	}
 
 	@Override
-	public CatVO loginProc(CatVO catVO) {
+	public CatVO loginProc(CatVO catVO) throws Exception {
 
 		return CatWorldDAO.loginProc(catVO);
 	}

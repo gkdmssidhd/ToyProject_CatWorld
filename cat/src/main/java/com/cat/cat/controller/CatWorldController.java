@@ -35,13 +35,13 @@ public class CatWorldController {
 	
 	// join 페이지에 입력만 할 수 있게 페이지만 리턴
 	@RequestMapping("join")
-	public String join() {
+	public String join() throws Exception {
 		return "join";
 	}
 	
 	// join을 입력해서 실제 디비에 저장하고 오는 곳
 	@RequestMapping("joinProc")
-	public String joinProc(CatVO catVO) {
+	public String joinProc(CatVO catVO) throws Exception {
 		
 		CatWorldService.joinProc(catVO);
 		
@@ -50,14 +50,14 @@ public class CatWorldController {
 	
 	// 로그인 입력하는 페이지만 리턴
 	@RequestMapping("login")
-	public String login() {
+	public String login() throws Exception {
 		return "login";
 	}
 
 	  // 실제 로그인한 정보가 존재하는지 디비에서 select하고 그 로그인한 회원의 세션을 부여하는 곳
 	  
 		@RequestMapping("loginProc")
-		public String loginProc(CatVO catVO, HttpSession session, Model model) {
+		public String loginProc(CatVO catVO, HttpSession session, Model model) throws Exception {
 
 			// 아이디랑 비번 검색해서 가져온거 member에 담기 
 			CatVO member = CatWorldService.loginProc(catVO);
@@ -111,7 +111,7 @@ public class CatWorldController {
 	// 작성된글을 model에 담고 배열 Arr 로 담아서 보여줄 필요가 있음
 	// List<> 트랜젝션 사용
 	@RequestMapping("catListPage")
-	public String Catlist(CatVO catVO)  {
+	public String Catlist(CatVO catVO) throws Exception {
 	
 		
 		return "catListPage";
@@ -119,7 +119,7 @@ public class CatWorldController {
 	
 	// 고양이 분양글을 실제로 올리는 페이지만 리턴하는 곳!
 	@RequestMapping("catRegistPage")
-	public String catRegistPage(HttpServletResponse response, CatVO catVO, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes)  {
+	public String catRegistPage(HttpServletResponse response, CatVO catVO, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
 		
 		HttpSession session = request.getSession();
 		
@@ -136,14 +136,14 @@ public class CatWorldController {
 	
 	// 실제로 고양이 분양글을 저장하는 곳
 	@RequestMapping("catSave")
-	public String catSave(CatVO catVO)  {
+	public String catSave(CatVO catVO) throws Exception {
 		
 		
 		return "";
 	}
 	
 	@RequestMapping("catDetail")
-	public String catDetail(CatVO catVO)  {
+	public String catDetail(CatVO catVO) throws Exception {
 		
 		
 		return "catDetail";

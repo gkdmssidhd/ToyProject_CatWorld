@@ -7,6 +7,15 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
+<style>
+#submitBtn {
+	border-color:red;
+	width:10%;
+	height:10%;
+	background-color:pink;
+}
+
+</style>
 	<body>
 	<h2>CatRegistPage</h2>
 	<form id="catRegistForm" th:action="@{/cat/catSave}" th:method="POST">
@@ -28,8 +37,10 @@
 		
 		<div class="price">가격</div>
 		<input type="text"><br/>
-	</form>
+
+		<input type="submit" value="등록" id="submitBtn">
 		<input type="button" id="mainBtn" value="메인" />
+	</form>
 	
 	<script>
 		$('#mainBtn').on('click', function() {
