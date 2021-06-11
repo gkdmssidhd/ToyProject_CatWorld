@@ -32,5 +32,25 @@ public class CatWorldServiceImpl implements CatWorldService {
 		return CatWorldDAO.loginProc(catVO);
 	}
 
+	@Override
+	public CatVO catSave(CatVO catVO) throws Exception {
+		
+		int resultCnt = 0;
+		
+		try {
+			if("I".equals(catVO.getGubun())) {
+				resultCnt = CatWorldDAO.catSave(catVO);
+			} else {
+				// resultCnt = CatWorldDAO.catUpdate(catVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		catVO.setReturnCnt(resultCnt);
+		
+		return catVO;
+	}
+
 	
 }

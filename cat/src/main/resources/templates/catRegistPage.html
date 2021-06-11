@@ -20,26 +20,29 @@
 	<h2>CatRegistPage</h2>
 	<form id="catRegistForm" th:action="@{/cat/catSave}" th:method="POST">
 		<div class="name">이름</div>
-		<input type="text"><br/>
+		<input type="text" id="name" th:name="name"><br/>
 
 		<div class="model">종</div>
-		<input type="radio" th:name="model" th:value="0">남
-		<input type="radio" th:name="model" th:value="1">여<br/>
+		<input type="text" id="model" th:name="model"><br/>
 		
 		<div class="age">나이</div>
-		<input type="text"><br/>
+		<input type="text" id="age" th:name="age"><br/>
 		
 		<div class="gender">성별</div>
-		<input type="text"><br/>
+		<input type="radio" th:value="0" id="gender" th:name="gender">남
+		<input type="radio" th:value="1" id="gender" th:name="gender">여<br/>
+		
 		
 		<div class="content">소개</div>
 		<textarea th:name="content" id="summernote" cols="30" rows="10"></textarea><br/>
 		
 		<div class="price">가격</div>
-		<input type="text"><br/>
+		<input type="text" id="price" th:name="price"><br/>
 
+		<input type="hidden" name="gubun" value="I" />
 		<input type="submit" value="등록" id="submitBtn">
 		<input type="button" id="mainBtn" value="메인" />
+		
 	</form>
 	
 	<script>

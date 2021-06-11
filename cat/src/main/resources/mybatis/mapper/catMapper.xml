@@ -29,6 +29,33 @@
 		       AND PASSWORD = #{password}
 		]]>
 	</select>
+	
+	<insert id="insertCat" parameterType="CatVO">
+	<![CDATA[
+		INSERT 
+		  INTO CAT
+			   (
+			    name
+			  , model
+			  , age
+			  , gender
+			  , content
+			  , price
+			  , regDate
+			  , updateDate
+			 )
+		VALUES (
+			    #{name}
+			  , #{model}
+			  , #{age}
+			  , #{gender}
+			  , #{content}
+			  , #{price}
+			  , NOW()
+			  , NOW()
+			 )
+	]]>
+	</insert>
 <!--  
 	<select id="" parameterType="" resultType="">
 		<![CDATA[

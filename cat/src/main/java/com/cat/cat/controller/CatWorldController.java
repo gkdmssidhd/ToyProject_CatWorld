@@ -51,6 +51,7 @@ public class CatWorldController {
 	// 로그인 입력하는 페이지만 리턴
 	@RequestMapping("login")
 	public String login() throws Exception {
+		
 		return "login";
 	}
 
@@ -136,10 +137,9 @@ public class CatWorldController {
 	
 	// 실제로 고양이 분양글을 저장하는 곳
 	@RequestMapping("catSave")
-	public String catSave(CatVO catVO) throws Exception {
+	public CatVO catSave(CatVO catVO) throws Exception {
 		
-		
-		return "";
+		return CatWorldService.catSave(catVO);
 	}
 	
 	@RequestMapping("catDetail")

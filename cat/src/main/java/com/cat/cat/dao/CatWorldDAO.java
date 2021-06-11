@@ -27,6 +27,11 @@ public class CatWorldDAO extends AbstractDAO {
 		return (CatVO) select("cat.selectMember", catVO); 
 	}
 
+	public int catSave(CatVO catVO) throws Exception {
+
+		return (int) insert("cat.insertCat", catVO);
+	}
+
 
 	
 }
