@@ -52,5 +52,13 @@ public class CatWorldServiceImpl implements CatWorldService {
 		return catVO;
 	}
 
+	@Override
+	public List<CatVO> catList() throws Exception {
+
+		List<CatVO> catList = CatWorldDAO.catList();
+		
+		return catList;
+	}
+
 	
 }

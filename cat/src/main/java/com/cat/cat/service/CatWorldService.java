@@ -14,6 +14,9 @@ public interface CatWorldService {
 	// 글 저장
 	public CatVO catSave(CatVO catVO) throws Exception;
 
+	// 고양이 목록
+	public List<CatVO> catList() throws Exception;
+
 
 
 

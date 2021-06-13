@@ -56,6 +56,20 @@
 			 )
 	]]>
 	</insert>
+	
+	<select id="selectCatList" parameterType="CatVO" resultType="CatVO">
+		<![CDATA[
+			SELECT name
+			     , model
+			  	 , age
+			  	 , gender
+			  	 , content
+			   	 , price
+			  	 , regDate
+			  	 , updateDate
+			  FROM CAT
+		]]>
+	</select>
 <!--  
 	<select id="" parameterType="" resultType="">
 		<![CDATA[

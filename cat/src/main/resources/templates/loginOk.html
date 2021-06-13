@@ -12,7 +12,7 @@
 	
 		<input type="button" id="listBtn" value="고양이분양리스트" />
 		<input type="button" id="mainBtn" value="메인" />
-		<input type="button" id="logoutBtn" value="로그아웃" th:if="${session.id != null}"/>
+		<input type="button" id="logoutBtn" value="로그아웃" th:if="${session.id != null}" onclick="alert('로그아웃이 완료 되었습니다.'); return false;"/>
 	
 	<script>
 		$('#listBtn').on('click', function() {

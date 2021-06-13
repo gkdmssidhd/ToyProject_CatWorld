@@ -22,7 +22,7 @@ public class CatWorldDAO extends AbstractDAO {
 		  }
 	}
 
-	public CatVO loginProc(CatVO catVO) throws Exception{
+	public CatVO loginProc(CatVO catVO) throws Exception {
 		
 		return (CatVO) select("cat.selectMember", catVO); 
 	}
@@ -30,6 +30,14 @@ public class CatWorldDAO extends AbstractDAO {
 	public int catSave(CatVO catVO) throws Exception {
 
 		return (int) insert("cat.insertCat", catVO);
+	}
+
+	public List<CatVO> catList() throws Exception{
+
+		@SuppressWarnings("unchecked")
+		List<CatVO> catList = (List<CatVO>) selectList("cat.selectCatList");
+		
+		return catList;
 	}
 
 

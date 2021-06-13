@@ -42,16 +42,35 @@
 		<input type="hidden" name="gubun" value="I" />
 		<input type="submit" value="등록" id="submitBtn">
 		<input type="button" id="mainBtn" value="메인" />
-		
 	</form>
-	
-	<script>
-		$('#mainBtn').on('click', function() {
-			location.href = "/";
-		});
-		
-	
-	</script>
-	
+		<script>
+			$('#mainBtn').on('click', function() {
+				location.href = "/";
+			});
+			
+			$("#catRegistForm").submit(function() {
+				event.preventDefault();
+				
+				var form = $("#catRegistForm")[0];
+				
+				var formData = new FormDate(form);
+				
+				$.ajax({
+					url : "/cat/catSave"
+					, type : "post"
+					, data : formData
+					, success : function(data) {
+						alert("정상적으로 등록되었습니다.");
+						location.href = "/cat/catListPage";
+					}
+					, error : function(xhr, status) {
+						alert("오류가 발생했습니다. :: " + status);
+					}
+					, cache: false
+					, contentType: false
+					, processData: false
+				});
+			});
+		</script>
 	</body>
 </html>

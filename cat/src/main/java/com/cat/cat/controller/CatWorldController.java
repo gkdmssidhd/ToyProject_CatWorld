@@ -112,8 +112,11 @@ public class CatWorldController {
 	// 작성된글을 model에 담고 배열 Arr 로 담아서 보여줄 필요가 있음
 	// List<> 트랜젝션 사용
 	@RequestMapping("catListPage")
-	public String Catlist(CatVO catVO) throws Exception {
+	public String Catlist(Model model) throws Exception {
 	
+		List<CatVO> catList = CatWorldService.catList();
+		
+		model.addAttribute("catList", catList);
 		
 		return "catListPage";
 	}

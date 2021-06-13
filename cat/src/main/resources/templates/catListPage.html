@@ -9,7 +9,42 @@
 </head>
 	<body>
 	<h2>Cat List</h2>
-	
+	<div class="catListTable">
+			<table border="1">
+				<colgroup>
+					<col width="5%" />
+					<col width="10%" />
+					<col width="8%" />
+					<col width="8%" />
+					<col width="8%" />
+					<col width="*" />
+					<col width="10%" />
+				</colgroup>
+				<!-- 헤더 제목 부분 -->
+				<thead align="center">
+				<tr>
+					<td>번호</td>
+					<td>이름</td>
+					<td>종</td>
+					<td>나이</td>
+					<td>성별</td>
+					<td>소개</td>
+					<td>가격</td>
+				</tr>
+				</thead>
+				<tbody align="center">
+					<tr th:each="cat : ${catList}">
+						<td th:text="${catStat.index + 1}"></td>
+						<td th:text="${cat.name}"></td>
+						<td th:text="${cat.model}"></td>
+						<td th:text="${cat.age}"></td>
+						<td th:text="${cat.gender}"></td>
+						<td th:text="${cat.content}"></td>
+						<td th:text="${cat.price}"></td>
+					</tr> 
+				</tbody>
+			</table>
+		</div>
 		<input type="button" id="mainBtn" value="메인" />
 		<input type="button" id="RegistBtn" value="고양이 등록" />
 	

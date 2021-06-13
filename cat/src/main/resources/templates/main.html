@@ -14,7 +14,7 @@
 		<input type="button" id="joinBtn" value="회원가입" />
 		<input type="button" id="loginBtn" value="로그인" th:if="${session.id == null}"/>
 		<input type="button" id="listBtn" value="고양이 마켓 리스트" />
-		<input type="button" id="logoutBtn" value="로그아웃" th:if="${session.id != null}"/>
+		<input type="button" id="logoutBtn" value="로그아웃" th:if="${session.id != null}" onclick="alert('로그아웃이 완료 되었습니다.'); return false;"/>
 
 		<script>
 			$('#joinBtn').on('click', function() {
