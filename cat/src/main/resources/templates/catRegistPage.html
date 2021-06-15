@@ -17,36 +17,73 @@
 
 </style>
 	<body>
-	<h2>CatRegistPage</h2>
-	<form id="catRegistForm" th:action="@{/cat/catSave}" th:method="POST">
-		<div class="name">이름</div>
-		<input type="text" id="name" th:name="name"><br/>
-
-		<div class="model">종</div>
-		<input type="text" id="model" th:name="model"><br/>
+		<h2>CatRegistPage</h2>
+			<form id="catRegistForm" th:action="@{/cat/catSave}" th:method="POST">
+				<div class="name">이름</div>
+				<input type="text" id="name" th:name="name"><br/>
 		
-		<div class="age">나이</div>
-		<input type="text" id="age" th:name="age"><br/>
+				<div class="model">종</div>
+				<input type="text" id="model" th:name="model"><br/>
+				
+				<div class="age">나이</div>
+				<input type="text" id="age" th:name="age"><br/>
+				
+				<div class="gender">성별</div>
+				<input type="radio" th:value="0" id="gender" th:name="gender">남
+				<input type="radio" th:value="1" id="gender" th:name="gender">여<br/>
+				
+				
+				<div class="content">소개</div>
+				<textarea th:name="content" id="summernote" cols="30" rows="10"></textarea><br/>
+				
+				<div class="price">가격</div>
+				<input type="text" id="price" th:name="price"><br/>
 		
-		<div class="gender">성별</div>
-		<input type="radio" th:value="0" id="gender" th:name="gender">남
-		<input type="radio" th:value="1" id="gender" th:name="gender">여<br/>
-		
-		
-		<div class="content">소개</div>
-		<textarea th:name="content" id="summernote" cols="30" rows="10"></textarea><br/>
-		
-		<div class="price">가격</div>
-		<input type="text" id="price" th:name="price"><br/>
-
-		<input type="hidden" name="gubun" value="I" />
-		<input type="submit" value="등록" id="submitBtn">
-		<input type="button" id="mainBtn" value="메인" />
-	</form>
+				<input type="hidden" name="gubun" value="I" />
+				<input type="hidden" name="id" value="${session.id}" />
+				<input type="submit" value="등록" />
+				<input type="button" id="mainBtn" value="메인" />
+			</form>
 		<script>
 			$('#mainBtn').on('click', function() {
 				location.href = "/";
 			});
+
+			$('#summernote').summernote({
+				height : 300, 		// 에디터 높이
+				minHeight : null, 	// 최소 높이
+				maxHeight : null,	// 최대 높이
+				focus : true, 		// 에디터 로딩후 포커스를 맞출지 여부
+				lang : "ko-KR", 	// 한글 설정
+				maximumImageFileSize: 524288,
+				placeholder : "내용을 작성해 주세요",	
+				callbacks : {
+					onImageUpload : function(files, editor, welEditable) {
+						for (let i = files.length - 1; i >= 0; i--) {
+							uploadSummernoteImageFile(files[i], this);
+						}
+					}
+				}
+			});
+
+			// 서머노트 이미지 파일 업로드
+			function uploadSummernoteImageFile(file, el) {
+			
+				data = new FormData();
+				data.append('file', file);
+				$.ajax({
+					data : data,
+					type : 'POST',
+					url : '/uploadImage',
+					contentType : false,
+					enctype : 'multipart/form-data',
+					processData : false,
+					success : function(data) {
+						$(el).summernote('editor.insertImage', data.url);
+						console.log('data.url이 이미지 파일 주소' + data.url);
+					}
+				});
+			}
 			
 			$("#catRegistForm").submit(function() {
 				event.preventDefault();
@@ -57,7 +94,7 @@
 				
 				$.ajax({
 					url : "/cat/catSave"
-					, type : "post"
+					, type : "POST"
 					, data : formData
 					, success : function(data) {
 						alert("정상적으로 등록되었습니다.");

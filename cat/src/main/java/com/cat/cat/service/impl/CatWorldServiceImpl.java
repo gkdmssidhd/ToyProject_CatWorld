@@ -66,5 +66,11 @@ public class CatWorldServiceImpl implements CatWorldService {
 		return null;
 	}
 
+	@Override
+	public CatVO catUpdate(CatVO catVO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

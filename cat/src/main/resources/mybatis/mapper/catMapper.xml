@@ -59,15 +59,18 @@
 	
 	<select id="selectCatList" parameterType="CatVO" resultType="CatVO">
 		<![CDATA[
-			SELECT name
-			     , model
-			  	 , age
-			  	 , gender
-			  	 , content
-			   	 , price
-			  	 , regDate
-			  	 , updateDate
-			  FROM CAT
+			SELECT C.name
+			     , C.model
+			  	 , C.age
+			  	 , CASE C.gender
+			  	   WHEN 0 THEN '남자'
+			  	   WHEN 1 THEN '여자'
+			  	    END AS gender_nm
+			  	 , C.content
+			   	 , C.price
+			  	 , C.regDate
+			  	 , C.updateDate
+			  FROM CAT C
 		]]>
 	</select>
 <!--  

@@ -17,7 +17,11 @@ public interface CatWorldService {
 	// 고양이 목록
 	public List<CatVO> catList() throws Exception;
 
+	// 고양이 디테일
+	public CatVO catDetail() throws Exception;
 
+	// 고양이 수정
+	public CatVO catUpdate(CatVO catVO) throws Exception;
 
 
 

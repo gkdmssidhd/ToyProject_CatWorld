@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<title>Cat World List</title>	
+	<title>Cat World Detail</title>	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 	<body>
-	<h2>Cat List</h2>
+	<h2>Cat Detail</h2>
+	<form id="catUpdateForm" th:action="@{/cat/catUpdate}" th:object="${catInfo}">
 	<div class="catListTable">
 			<table border="1">
 				<colgroup>
@@ -33,20 +34,21 @@
 				</tr>
 				</thead>
 				<tbody align="center">
-					<tr th:each="cat : ${catList}">
-						<td th:text="${catStat.index + 1}"></td>
-						<td th:text="${cat.name}"></td>
-						<td th:text="${cat.model}"></td>
-						<td th:text="${cat.age}"></td>
-						<td th:text="${cat.genderNm}"></td>
-						<td th:text="${cat.content}"></td>
-						<td th:text="${cat.price}"></td>
+					<tr>
+						<td th:text="*{name}"></td>
+						<td th:text="*{model}"></td>
+						<td th:text="*{age}"></td>
+						<td th:text="*{genderNm}"></td>
+						<td th:text="*{content}"></td>
+						<td th:text="*{price}"></td>
+						
 					</tr> 
 				</tbody>
 			</table>
 		</div>
 		<input type="button" id="mainBtn" value="메인" />
 		<input type="button" id="RegistBtn" value="고양이 등록" />
+	</form>
 	
 	<script>
 		$('#mainBtn').on('click', function() {

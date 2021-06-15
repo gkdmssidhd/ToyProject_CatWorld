@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.tools.JavaFileObject;
 
 import com.cat.cat.service.CatWorldService;
 import org.slf4j.Logger;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cat.cat.service.CatWorldService;
@@ -144,11 +147,34 @@ public class CatWorldController {
 		
 		return CatWorldService.catSave(catVO);
 	}
-	
-	@RequestMapping("catDetail")
-	public String catDetail(CatVO catVO) throws Exception {
+	 
+	@RequestMapping("catDetail") 
+	public String catDetail(CatVO catVO, Model model) throws Exception {
 		
+		CatVO catInfo = CatWorldService.catDetail();
+		
+		model.addAttribute("catInfo", catInfo);
 		
 		return "catDetail";
 	}
+	
+	@RequestMapping("catUpdate") 
+	public String catUpdate(@ModelAttribute("cayVO") CatVO catVO, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
+		
+		HttpSession session = request.getSession();
+		
+		Object member = session.getAttribute("id");
+		
+		if(member == null) {
+			return "redirect:/cat/login";
+		} else {
+			
+			CatVO catInfo = CatWorldService.catUpdate(catVO);
+			
+			model.addAttribute("catInfo", catInfo);
+			
+			return "cat/catUpdate";
+		}
+	}
+	
 }

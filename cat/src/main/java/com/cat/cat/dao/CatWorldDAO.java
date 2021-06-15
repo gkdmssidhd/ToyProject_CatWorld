@@ -12,6 +12,7 @@ import com.cat.cat.vo.CatVO;
 public class CatWorldDAO extends AbstractDAO {
 	private static final Logger logger = LoggerFactory.getLogger(CatWorldDAO.class);
 
+	// 회원가입
 	public void joinProc(CatVO catVO) throws Exception {
 	
 		  try { 
@@ -22,16 +23,19 @@ public class CatWorldDAO extends AbstractDAO {
 		  }
 	}
 
+	// 로그인
 	public CatVO loginProc(CatVO catVO) throws Exception {
 		
 		return (CatVO) select("cat.selectMember", catVO); 
 	}
 
+	// 저장
 	public int catSave(CatVO catVO) throws Exception {
 
 		return (int) insert("cat.insertCat", catVO);
 	}
 
+	// 리스트
 	public List<CatVO> catList() throws Exception{
 
 		@SuppressWarnings("unchecked")
