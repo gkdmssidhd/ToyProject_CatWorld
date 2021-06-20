@@ -84,23 +84,6 @@ public class CatWorldController {
 			return returnUrl;
 		}
 	
-	/*	
-		login Map으로
-	 * @PostMapping("loginProc") public String loginProc(CatVO catVO,
-	 * HttpServletRequest request)throws Exception {
-	 * 
-	 * HttpSession session = request.getSession();
-	 * 
-	 * Map<String,String> catInform = CatWorldService.loginProc(catVO);
-	 * 
-	 * if(catInform.get("id").equals(catVO.getId()) &&
-	 * catInform.get("password").equals(catVO.getPassword())){
-	 * session.setAttribute("id", catInform.get("id"));
-	 * 
-	 * return "loginOk"; }else{ return "loginError"; } }
-	 */
-	
-	
 	// 로그아웃
 	@RequestMapping("logout")
 	public String logout(HttpSession session)  {
@@ -142,8 +125,13 @@ public class CatWorldController {
 	}
 	
 	// 실제로 고양이 분양글을 저장하는 곳
-	@RequestMapping("catSave")
-	public CatVO catSave(CatVO catVO) throws Exception {
+	@RequestMapping(value = "catSave")
+	public CatVO catSave(CatVO catVO, HttpServletRequest request) throws Exception {
+		
+		logger.info("#####################");
+		logger.info(catVO.toString());
+		logger.info("#####################");
+		System.out.println(catVO);
 		
 		return CatWorldService.catSave(catVO);
 	}

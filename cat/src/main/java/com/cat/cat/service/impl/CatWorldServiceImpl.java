@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cat.cat.dao.CatWorldDAO;
 import com.cat.cat.service.CatWorldService;
@@ -31,7 +32,8 @@ public class CatWorldServiceImpl implements CatWorldService {
 
 		return CatWorldDAO.loginProc(catVO);
 	}
-
+	
+	@Transactional
 	@Override
 	public CatVO catSave(CatVO catVO) throws Exception {
 		
@@ -41,12 +43,13 @@ public class CatWorldServiceImpl implements CatWorldService {
 			if("I".equals(catVO.getGubun())) {
 				resultCnt = CatWorldDAO.catSave(catVO);
 			} else {
-				// resultCnt = CatWorldDAO.catUpdate(catVO);
+				resultCnt = CatWorldDAO.catUpdate(catVO);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+		// setReturnCnt 작업 처리 결과건수 변수를 가져오다.
 		catVO.setReturnCnt(resultCnt);
 		
 		return catVO;
@@ -60,6 +63,7 @@ public class CatWorldServiceImpl implements CatWorldService {
 		return catList;
 	}
 
+	@Transactional
 	@Override
 	public CatVO catDetail() throws Exception {
 		// TODO Auto-generated method stub

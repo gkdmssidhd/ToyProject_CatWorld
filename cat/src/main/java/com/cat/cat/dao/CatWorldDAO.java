@@ -44,6 +44,11 @@ public class CatWorldDAO extends AbstractDAO {
 		return catList;
 	}
 
+	public int catUpdate(CatVO catVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 	
 }
